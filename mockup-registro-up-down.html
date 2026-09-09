@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Portale Lo.Com — Comunicazioni Up Down</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Segoe UI", Tahoma, Arial, sans-serif; font-size: 13px; color: #222; background: #e9ebee; }
+  .top { background: #c8501a; color: #fff; padding: 0 18px; height: 46px; display: flex; align-items: center; gap: 22px; }
+  .top .logo { font-weight: 700; font-size: 16px; letter-spacing: .3px; }
+  .top .logo small { font-weight: 400; opacity: .85; margin-left: 8px; }
+  .top nav a { color: #fff; opacity: .8; text-decoration: none; margin-right: 16px; padding: 14px 0; }
+  .top nav a.on { opacity: 1; border-bottom: 3px solid #fff; }
+  .top .user { margin-left: auto; font-size: 12px; opacity: .9; }
+  .wrap { padding: 16px 18px; max-width: 1240px; }
+  h1 { font-size: 18px; margin: 0 0 4px; font-weight: 600; }
+  .sub { color: #666; margin-bottom: 14px; }
+  .kpis { display: flex; gap: 10px; margin-bottom: 14px; }
+  .kpi { background: #fff; border: 1px solid #cfd3d8; border-radius: 3px; padding: 10px 14px; min-width: 150px; }
+  .kpi b { display: block; font-size: 22px; font-weight: 600; }
+  .kpi span { color: #666; font-size: 12px; }
+  .kpi.alert b { color: #b3261e; }
+  .tabs { display: flex; gap: 0; margin-bottom: -1px; }
+  .tabs div { background: #dde0e4; border: 1px solid #cfd3d8; border-bottom: none; padding: 7px 14px; border-radius: 3px 3px 0 0; color: #555; }
+  .tabs div.on { background: #fff; color: #222; font-weight: 600; }
+  .panel { background: #fff; border: 1px solid #cfd3d8; border-radius: 3px; padding: 12px; margin-bottom: 18px; }
+  .bar { display: flex; gap: 8px; align-items: center; margin-bottom: 10px; flex-wrap: wrap; }
+  .bar select, .bar input { font: inherit; border: 1px solid #b9bec5; border-radius: 3px; padding: 5px 8px; background: #fff; }
+  .btn { font: inherit; border: 1px solid #b9bec5; background: #f4f5f7; border-radius: 3px; padding: 5px 10px; cursor: pointer; }
+  .btn.primary { background: #c8501a; color: #fff; border-color: #a8410f; font-weight: 600; }
+  .bar .right { margin-left: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; background: #f0f1f3; border-bottom: 2px solid #cfd3d8; padding: 7px 8px; font-weight: 600; color: #444; white-space: nowrap; }
+  td { border-bottom: 1px solid #e3e5e8; padding: 7px 8px; vertical-align: top; }
+  tr:hover td { background: #fafafa; }
+  .tag { display: inline-block; border-radius: 3px; padding: 2px 7px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+  .s-aperta { background: #fde8e6; color: #b3261e; }
+  .s-val { background: #fff3d6; color: #8a5a00; }
+  .s-appr { background: #e3f3e6; color: #1d6b2e; }
+  .s-rinv { background: #e8eaf0; color: #4b5563; }
+  .s-chiusa { background: #ececec; color: #666; }
+  .p-alta { color: #b3261e; font-weight: 600; }
+  .p-media { color: #8a5a00; }
+  .gg { font-variant-numeric: tabular-nums; }
+  .gg.over { color: #b3261e; font-weight: 600; }
+  .muted { color: #777; }
+  .risp { color: #333; }
+  .risp.none { color: #b3261e; font-style: italic; }
+  .note { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .card { border: 1px solid #cfd3d8; border-radius: 3px; padding: 10px 12px; background: #fbfbfb; }
+  .card h3 { margin: 0 0 2px; font-size: 13px; font-weight: 600; }
+  .card .meta { color: #666; font-size: 11px; margin-bottom: 6px; }
+  .card ul { margin: 0; padding-left: 18px; }
+  .card li { margin-bottom: 3px; }
+  .card .to { margin-top: 6px; font-size: 11px; color: #555; }
+  .drawer { border-left: 4px solid #c8501a; background: #fff8f4; padding: 10px 14px; margin-top: 12px; border-radius: 3px; }
+  .drawer h4 { margin: 0 0 6px; font-size: 13px; }
+  .field { display: inline-block; margin: 0 14px 8px 0; font-size: 12px; }
+  .field label { display: block; color: #666; font-size: 11px; margin-bottom: 2px; }
+  .field .v { border: 1px solid #b9bec5; background: #fff; border-radius: 3px; padding: 4px 8px; min-width: 120px; display: inline-block; }
+  .field .v.wide { min-width: 520px; }
+  .field .v.ta { min-height: 48px; width: 700px; vertical-align: top; }
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="logo">ITALNOLO <small>Portale operativo</small></div>
+  <nav>
+    <a>Prenotazioni</a><a>Agenda</a><a>Attrezzature</a><a>Clienti</a><a>Manutenzioni</a><a class="on">Comunicazioni Up Down</a>
+  </nav>
+  <div class="user">Fabrizio Caiti · Area Nord · Sarzana</div>
+</div>
+
+<div class="wrap">
+  <h1>Comunicazioni Verticali Up Down</h1>
+  <div class="sub">Registro delle segnalazioni dal campo (UP) e delle note di ritorno dalla direzione (DOWN). Ogni riga resta visibile finché non ha una risposta.</div>
+
+  <div class="kpis">
+    <div class="kpi"><b>14</b><span>Segnalazioni aperte</span></div>
+    <div class="kpi alert"><b>5</b><span>Senza riscontro da oltre 15 gg</span></div>
+    <div class="kpi"><b>3</b><span>In valutazione</span></div>
+    <div class="kpi"><b>2</b><span>Approvate nel trimestre</span></div>
+    <div class="kpi"><b>4</b><span>Note di ritorno ricevute</span></div>
+  </div>
+
+  <div class="tabs"><div class="on">Flusso UP · Segnalazioni dal campo</div><div>Flusso DOWN · Note di ritorno</div><div>Storico</div></div>
+  <div class="panel">
+    <div class="bar">
+      <select><option>Tutte le sedi</option><option>SZ</option><option>SP</option><option>MS</option><option>VI</option><option>PI</option><option>LU</option><option>GE</option><option>EM</option></select>
+      <select><option>Stato: aperte + in valutazione</option><option>Tutte</option><option>Approvate</option><option>Rinviate</option><option>Chiuse</option></select>
+      <select><option>Tema: tutti</option><option>Attrezzature</option><option>Sede / struttura</option><option>Software</option><option>Personale</option><option>Clienti</option></select>
+      <input placeholder="Cerca..." style="width:180px">
+      <label style="font-size:12px"><input type="checkbox" checked> Solo senza riscontro</label>
+      <span class="right"></span>
+      <button class="btn">Esporta CSV</button>
+      <button class="btn">Ordine del giorno riunione</button>
+      <button class="btn primary">+ Nuova segnalazione</button>
+    </div>
+    <table>
+      <thead><tr>
+        <th>#</th><th>Data</th><th>Sede</th><th>Proposta da</th><th>Tema</th><th>Segnalazione</th><th>Priorità</th><th>Stato</th><th>gg senza<br>riscontro</th><th>Risposta direzione</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>031</td><td>02/09/26</td><td>SZ</td><td>F. Caiti</td><td>Attrezzature</td><td>Telematica (Trackunit) sul parco motogeneratori: posizione, ore, allarmi. Ripresentata dopo riunione ASSODIMI.</td><td class="p-alta">Alta</td><td><span class="tag s-val">In valutazione</span></td><td class="gg">7</td><td class="risp">Presa in carico. Chiedere offerta aggiornata a Trackunit. — AD, 04/09</td></tr>
+        <tr><td>030</td><td>28/08/26</td><td>SP</td><td>F. Caiti</td><td>Sede / struttura</td><td>Cantiere antenna telefonica sul muro perimetrale: verificare servitù e accesso mezzi prima dell'inizio lavori.</td><td class="p-alta">Alta</td><td><span class="tag s-aperta">Aperta</span></td><td class="gg over">12</td><td class="risp none">Nessun riscontro</td></tr>
+        <tr><td>029</td><td>21/08/26</td><td>MS</td><td>D. Rossi</td><td>Clienti</td><td>Indice di soddisfazione a fine noleggio (3 domande via WhatsApp).</td><td class="p-media">Media</td><td><span class="tag s-aperta">Aperta</span></td><td class="gg over">19</td><td class="risp none">Nessun riscontro</td></tr>
+        <tr><td>027</td><td>04/08/26</td><td>SZ</td><td>F. Caiti</td><td>Software</td><td>Prenotazioni condivise tra sedi sul portale: dismissione cartellini a muro.</td><td class="p-alta">Alta</td><td><span class="tag s-appr">Approvata</span></td><td class="gg">—</td><td class="risp">Ok pilota Sarzana 3 mesi. — AD, 12/08</td></tr>
+        <tr><td>025</td><td>22/07/26</td><td>VI</td><td>M. Bianchi</td><td>Personale</td><td>Formazione PLE per secondo operatore: oggi un solo abilitato in sede.</td><td class="p-media">Media</td><td><span class="tag s-aperta">Aperta</span></td><td class="gg over">49</td><td class="risp none">Nessun riscontro</td></tr>
+        <tr><td>022</td><td>30/06/26</td><td>SZ</td><td>F. Caiti</td><td>Attrezzature</td><td>Manutenzione preventiva per macchina (scheda per matricola IT-) invece che per categoria.</td><td class="p-media">Media</td><td><span class="tag s-rinv">Rinviata</span></td><td class="gg">—</td><td class="risp">Rivedere dopo Fase 1 del portale. — AD, 08/07</td></tr>
+        <tr><td>018</td><td>15/05/26</td><td>PI</td><td>L. Verdi</td><td>Attrezzature</td><td>Secondo carrello da 25 q per sede Pisa: picchi di consegna il lunedì.</td><td class="p-media">Media</td><td><span class="tag s-aperta">Aperta</span></td><td class="gg over">117</td><td class="risp none">Nessun riscontro</td></tr>
+      </tbody>
+    </table>
+
+    <div class="drawer">
+      <h4>Nuova segnalazione</h4>
+      <div class="field"><label>Data</label><span class="v">09/09/2026</span></div>
+      <div class="field"><label>Sede</label><span class="v">SZ</span></div>
+      <div class="field"><label>Proposta da</label><span class="v">Fabrizio Caiti</span></div>
+      <div class="field"><label>Tema</label><span class="v">Attrezzature</span></div>
+      <div class="field"><label>Priorità</label><span class="v">Media</span></div><br>
+      <div class="field"><label>Titolo</label><span class="v wide">&nbsp;</span></div><br>
+      <div class="field"><label>Descrizione, problema o proposta (cosa, perché, cosa serve per decidere)</label><span class="v ta">&nbsp;</span></div><br>
+      <div class="field"><label>Allegati</label><span class="v">Aggiungi file...</span></div>
+      <button class="btn primary">Salva e invia alla direzione</button>
+      <span class="muted" style="margin-left:10px">Alla direzione arriva una mail con il link alla riga. Il contatore "gg senza riscontro" parte da oggi.</span>
+    </div>
+  </div>
+
+  <div class="tabs"><div>Flusso UP · Segnalazioni dal campo</div><div class="on">Flusso DOWN · Note di ritorno</div><div>Storico</div></div>
+  <div class="panel">
+    <div class="bar">
+      <span class="muted">Sintesi scritta dopo ogni fiera, riunione ASSODIMI o incontro con fornitori. Va ai responsabili di sede entro 7 giorni.</span>
+      <span class="right"></span>
+      <button class="btn primary">+ Nuova nota di ritorno</button>
+    </div>
+    <div class="note">
+      <div class="card">
+        <h3>Riunione ASSODIMI — Firenze</h3>
+        <div class="meta">03/09/2026 · Partecipanti: G. Fiore, R. Donati · Inserita da: R. Donati</div>
+        <ul>
+          <li>La maggioranza dei noleggiatori usa telematica sulle macchine da oltre 80 q: ore, posizione, geofence.</li>
+          <li>Nuovo modello di contratto tipo ASSODIMI: clausola danni aggiornata.</li>
+          <li>Da approfondire: convenzione assicurativa di categoria.</li>
+        </ul>
+        <div class="to">Collegata a segnalazione #031 · Inviata a: responsabili di sede Nord e Sud</div>
+      </div>
+      <div class="card">
+        <h3>Incontro fornitore — piattaforme aeree</h3>
+        <div class="meta">27/08/2026 · Partecipanti: G. Fiore · Inserita da: G. Fiore</div>
+        <ul>
+          <li>Nuova gamma elettrica 2027, consegne da marzo.</li>
+          <li>Proposta permuta usato: chiedere alle sedi elenco macchine da valutare.</li>
+        </ul>
+        <div class="to">Richiesta alle sedi: elenco entro 20/09 · Inviata a: responsabili di sede</div>
+      </div>
+      <div class="card">
+        <h3>Fiera noleggiatori — Milano</h3>
+        <div class="meta">Giugno 2026 · Partecipanti: G. Fiore, R. Donati · Inserita da: R. Donati</div>
+        <ul>
+          <li>Dispositivo di prova telematica consegnato (in sede Sarzana).</li>
+          <li>Software gestionali visti: due candidati da confrontare con il portale interno.</li>
+        </ul>
+        <div class="to">Collegata a segnalazione #031</div>
+      </div>
+      <div class="card" style="border-style:dashed;background:#fff">
+        <h3 class="muted">Prossima nota attesa</h3>
+        <div class="meta">Convegno SAIE Bologna · ottobre 2026</div>
+        <div class="muted">La nota va inserita entro 7 giorni dall'evento.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
